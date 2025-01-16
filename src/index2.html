@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DrugViz</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/ma_style.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+        #youth-bar-chart-container h2 {
+            text-align: center;
+        }
+        #youth-bar-chart-container p {
+            text-align: center;
+            font-size: 14px;
+            color: gray;
+        }
+        #youth-bar-chart-container,
+        #bar-chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #youth-bar-chart, #bar-chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        svg {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="text-align: center; margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0.708);">
+            <h1 style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 3em; color: #10c650">DrugViz</h1>
+        </header>
+        <p style="font-family: 'Times New Roman', Times, serif; font-size: 2em; color: #333; text-align:center;">DrugViz is a visualization tool that provides insights into drug usage data across Europe.</p>
+        <p>The data used in this visualization is sourced from the EMCDDA (European Monitoring Center for Drugs and Drug Addiction) Treatment Demand Indicator (TDI) Data. This data includes information on individuals entering drug treatment programs across EU Member States, Norway, and Turkey, focusing on their primary drug of use, socio-demographic information, and patterns of drug use.</p>
+        <p>This page contains multiple visualizations: a bar chart race, a zoomable circle packing, and age distribution bar charts.</p>
+        
+        <!-- Zoomable Circle Packing -->
+        <h2 style="text-align: center; font-family: 'Arial Black', Gadget, sans-serif; font-size: 2em; color: #10c650; background-color: rgba(0, 0, 0, 0.708);">post-drug treatment across countries, influenced by various factors (Zoomable Circle Packing)</h2>
+        <p>Zoomable circle packing visualization is used to display post-drug treatment data across countries, influenced by various factors. The categories and subcategories used are as follows:</p>
+        <ul>
+            <li><strong>GENDER:</strong> Males, Females</li>
+            <li><strong>AGE GROUP:</strong> Young adults (Up to 34), adults (greater than 34)</li>
+            <li><strong>FREQUENCY OF USE:</strong> Daily, 4 to 6 days per week, 2 to 3 days per week, once a week or less, not used in the last 30 days</li>
+            <li><strong>MODE OF ADMINISTRATION:</strong> Inject, smoke/inhale, eat/drink, sniff</li>
+            <li><strong>EMPLOYMENT STATUS:</strong> Occasionally employed, regularly employed, student, unemployed/discouraged, receiving social benefits/pensioners/house-makers/disabled</li>
+            <li><strong>LEVEL OF EDUCATION:</strong> Never went to school/never completed primary school (ISCED 0), primary level of education (ISCED 1), secondary level of education (ISCED 2 and ISCED 3), higher education (ISCED 4 to ISCED 6)</li>
+        </ul>
+        <p style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 1.5em; color: #333; text-align: left;">Hierarchies</p>
+        <ul style="font-family: 'Times New Roman', Times, serif; font-size: 1.2em; list-style-type: none; padding: 0; color: #333;">
+            <li><strong>Country → Category → Subcategory:</strong> Start with a country, then drill down into categories and subcategories.</li>
+            <li><strong>Category → Subcategory → Country:</strong> Start with a category, then drill down into subcategories and countries.</li>
+        </ul>
+        <p style="font-family: 'Times New Roman', Times, serif; font-size: 1.2em; color: #333;">Hover over any circle to see detailed information, including the value and percentage contribution. Click on any circle to zoom in and explore deeper levels of the hierarchy.</p>
+        <div id="controls" style="text-align: center; margin-top: 20px;">
+            <button id="hierarchy1" style="font-size: 1.2em; padding: 10px 20px; margin: 10px;">Country → Category → Subcategory</button>
+            <button id="hierarchy2" style="font-size: 1.2em; padding: 10px 20px; margin: 10px;">Category → Subcategory → Country</button>
+        </div>
+        <div id="circle-packing" style="display: flex; justify-content: center;"></div>
+
+        <!-- Bar Chart Race -->
+        <h2 style="text-align: center; font-family: 'Arial Black', Gadget, sans-serif; font-size: 2em; color: #10c650; background-color: rgba(0, 0, 0, 0.708);">post-drug treatments across various countries in Europe from 2012 to 2022 (Bar Chart Race)</h2>
+        <p>The bar chart race visualizes the animated trends in post-drug treatments across various countries in Europe from 2012 to 2022.</p>
+        <div id="bar-chart-race"></div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="control-button" style="font-size: 1.2em; padding: 10px 20px;">Play</button>
+        </div>
+
+        <!-- Age Distribution Visualizations -->
+        <h2 style="text-align: center; font-family: 'Arial Black', Gadget, sans-serif; font-size: 2em; color: #10c650; background-color: rgba(0, 0, 0, 0.708);">Youth (<25) Share of Total Drug-Induced Deaths in Europe
+
+        </h2>
+        <div id="youth-bar-chart-container">
+            <h2>Drug Use is Killing EU Youth!</h2>
+            <!-- <p></p> -->
+            <div id="youth-bar-chart"></div>
+            <div id="tooltip-youth-chart" class="hidden"></div>
+        </div>
+        
+        <div id="bar-chart-container">
+            <h2 style="text-align: center; font-family: 'Arial Black', Gadget, sans-serif; font-size: 2em; color: #10c650; background-color: rgba(0, 0, 0, 0.708);">Age distribution (percent) of drug-induced deaths in the European Union, Norway, and Türkiye in recent years</h2> 
+            <!-- <h2></h2> -->
+            <div id="bar-chart"></div>
+            <div id="tooltip-bar-chart" class="hidden"></div>
+        </div>
+
+        <footer style="text-align: center; margin-top: 20px; font-family: 'Times New Roman', Times, serif; font-size: 2em; color: #333;">
+            <p>Source: <a href="https://www.euda.europa.eu/data/stats2024" target="_blank">EUDA (European Union Drug Agency)</a></p>
+        </footer>
+    </div>
+    <!-- Updated D3.js to version 7 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="scripts/circlePacking.js"></script>
+    <script src="scripts/barChartRace.js"></script>
+    <script src="scripts/ma_script.js"></script>
+</body>
+</html>
