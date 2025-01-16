@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DrugViz - Bar Chart Race and Circle Packing</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <header style="text-align: center; margin: 0; padding: 0; background-color: rgba(0, 0, 0, 0.708);">
+            <h1 style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 3em; color: #10c650">DrugViz</h1>
+        </header>
+        <p style="font-family: 'Times New Roman', Times, serif; font-size: 2em; color: #333; text-align:center ;">DrugViz is a visualization tool that provides insights into drug usage data across Europe</p>
+        <p>The data used in this visualization is sourced from the EMCDDA (European Monitoring Center for Drugs and Drug Addiction) Treatment Demand Indicator (TDI) Data. This data includes information on individuals entering drug treatment programs across EU Member States, Norway, and Turkey, focusing on their primary drug of use, socio-demographic information, and patterns of drug use.</p>
+        <p>This page contains two visualizations: a bar chart race and a zoomable circle packing.</p>
+        
+        <h2 style="text-align: center; font-family: 'Arial Black', Gadget, sans-serif; font-size: 2em; color: #10c650; background-color: rgba(0, 0, 0, 0.708);">Zoomable Circle Packing</h2>
+        <p>Zoomable circle packing Visualization is used to visualize post-drug treatment data across countries, influenced by various factors. The categories and subcategories used are as follows:</p>
+        <ul>
+            <li><strong>GENDER:</strong> Males, Females</li>
+            <li><strong>AGE GROUP:</strong> young adults (Upto 34), adults (greater than 34)</li>
+            <li><strong>FREQUENCY OF USE:</strong> Daily, 4 to 6 days per week, 2 to 3 days per week, Once a week or less, Not used in the last 30 days</li>
+            <li><strong>MODE OF ADMINISTRATION:</strong> Inject, Smoke / inhale, Eat / drink, Sniff</li>
+            <li><strong>EMPLOYMENT STATUS:</strong> Occasionally employed, Regularly employed, Student, Unemployed / discouraged, Receiving social benefits / pensioners / house-makers / disable</li>
+            <li><strong>LEVEL OF EDUCATION:</strong> Never went to school / never completed primary school (ISCED 0), Primary level of education (ISCED 1), Secondary level of education (ISCED 2 and ISCED 3), Higher education (ISCED 4 to ISCED 6)</li>
+        </ul>
+        <p style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 1.5em; color: #333; text-align: left;">Hierarchies</p>
+        <ul style="font-family: 'Times New Roman', Times, serif; font-size: 1.2em; list-style-type: none; padding: 0; color: #333;">
+            <li><strong>Country → Category → Subcategory:</strong> Start with a country, then drill down into categories and subcategories.</li>
+            <li><strong>Category → Subcategory → Country:</strong> Start with a category, then drill down into subcategories and countries.</li>
+        </ul>
+        <p style="font-family: 'Times New Roman', Times, serif; font-size: 1.2em; color: #333;">Hover over any circle to see detailed information, including the value and percentage contribution. Click on any circle to zoom in and explore deeper levels of the hierarchy.</p>
+        <div id="controls" style="text-align: center; margin-top: 20px;">
+            <button id="hierarchy1" style="font-size: 1.2em; padding: 10px 20px; margin: 10px;">Country → Category → Subcategory</button>
+            <button id="hierarchy2" style="font-size: 1.2em; padding: 10px 20px; margin: 10px;">Category → Subcategory → Country</button>
+        </div>
+        <div id="circle-packing" style="display: flex; justify-content: center;"></div>
+        <h2 style="text-align: center; font-family: 'Arial Black', Gadget, sans-serif; font-size: 2em; color: #10c650; background-color: rgba(0, 0, 0, 0.708);">Bar Chart Race</h2>
+        <p>The bar chart race visualizes the animated trends in Post Drug treatments across various countries in Europe from 2012 to 2022.</p>
+        <div id="bar-chart-race"></div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="control-button" style="font-size: 1.2em; padding: 10px 20px;">Play</button>
+        </div>
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="scripts/circlePacking.js"></script>
+    <script src="scripts/barChartRace.js"></script>
+    <footer style="text-align: center; margin-top: 20px; font-family: 'Times New Roman', Times, serif; font-size: 2em; color: #333;">
+        <p>Source: <a href="https://www.euda.europa.eu/data/stats2024/tdi_en" target="_blank">EUDA (European Union Drug Agency)</a></p>
+    </footer>
+</body>
+</html>
