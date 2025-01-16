@@ -1,7 +1,7 @@
 # DrugViz
 CS: Visual analytics (VA) project 
 
-The EU's drug policy for youth focuses on #prevention#, *education*, harm reduction, and early intervention to reduce drug use and its negative impacts.
+The EU's drug policy for youth focuses on # prevention#, *education*, harm reduction, and early intervention to reduce drug use and its negative impacts.
 
 Raising Awareness: Clearly presenting drug use statistics and risks helps young people understand the prevalence and dangers of drug use in their community.
 
