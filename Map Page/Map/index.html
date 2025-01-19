@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrugVis Map Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Prevalence of two main Drugs Use Map in Europe</h1>
+    <div class="controls">
+        <label for="substance-select">Substance:</label>
+        <select id="substance-select">
+            <option value="cannabis">Cannabis</option>
+            <option value="cocaine">Cocaine</option>
+        </select>
+        <label for="data-select">Prevalence:</label>
+        <select id="data-select">
+            <option value="prevalence">Overall (%)</option>
+            <option value="male">Males (%)</option>
+            <option value="female">Females (%)</option>
+        </select>
+        <label for="age-select">Age Group:</label>
+        <select id="age-select">
+            <option value="dataset1.csv">Young adults (15-34)</option>
+            <option value="dataset2.csv">All adults (15-64)</option>
+        </select>
+    </div>
+    <div class="tooltip"></div>
+    <div class="legend-arrow"></div>
+    <div class="visualization">
+        <svg id="map" style="margin-top: 20px; width: 800px; height: 600px;"></svg>
+        <div class="bar-charts">
+            <h2>Lifetime Cannabis Use Prevalence Among Young Adults in Europe (15-34)</h2>
+            <svg id="bar-chart1"></svg>
+            <h2>Lifetime Cocaine Use Prevalence Among Young Adults in Europe (15-34)</h2>
+            <svg id="bar-chart2"></svg>
+        </div>
+    </div>
+</body>
+</html>
