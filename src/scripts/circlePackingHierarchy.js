@@ -326,17 +326,8 @@ d3.csv("../data/TDI_categories_aggregated.csv").then(data => {
             button.property("disabled", true);
             d3.select("#reset-button").property("disabled", false);
             d3.select("#get-help-button").property("disabled", false);
-            d3.select("#see-trends-button").property("disabled", false);
             d3.select("#treatment-chances").style("display", "block"); // Ensure the card is displayed
         }
-    });
-
-    // Add event listener for the "See Trends" button
-    d3.select("#see-trends-button").on("click", function() {
-        // Show the bar chart race container
-        d3.select("#bar-chart-race-container").style("display", "block");
-        // Show the bar chart race
-        showBarChartRace();
     });
 
     // Add event listener for the "Get Help" button
@@ -361,20 +352,32 @@ d3.csv("../data/TDI_categories_aggregated.csv").then(data => {
             renderChart(hierarchies[key], svgContainers[key], key);
         });
 
+        // Remove highlights from bar chart
+        window.selectedCountryForBarChart = null;
+
         // Clear treatment chances display
         d3.select("#treatment-chances")
           .text("")
           .style("color", null)
-          .style("font-size", null);
+          .style("font-size", null)
+          .style("display", "none");
 
-        // Hide bar chart race container and control button
-        d3.select("#bar-chart-race-container").style("display", "none");
-        document.getElementById("control-button").style.display = "none";
+        // Ensure bar chart race, play button, and text are visible
+        d3.select("#bar-chart-race-container").style("display", "block");
+        d3.select("#control-button").style("display", "block");
+        d3.select("#bar-chart-race-container p").style("display", "block");
 
-        // Re-enable "See Trends" and disable main button
-        d3.select("#see-trends-button").property("disabled", true);
-        button.property("disabled", true);
-        d3.select("#get-help-button").property("disabled", true);
+        // Re-enable "Get Help" button
+        d3.select("#get-help-button").property("disabled", false);
+
+        // Clear highlights from circle chart and bar chart
+        d3.selectAll("#circle-packings svg").each(function() {
+            d3.select(this).selectAll("circle").attr("fill", function(d) {
+                return d.children ? color(d.depth) : "white";
+            });
+        });
+        d3.selectAll("#bar-chart-race svg").remove();
+        showBarChartRace();
     });
 
     Object.keys(hierarchies).forEach(key => {
