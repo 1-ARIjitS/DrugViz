@@ -1,8 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
+    showBarChartRace();
+});
+
+function showBarChartRace() {
     // Set up dimensions and margins
     const margin = { top: 20, right: 200, bottom: 30, left: 200 },
         width = 1200 - margin.left - margin.right,
         height = 800 - margin.top - margin.bottom;
+
+    // Clear any existing SVG to prevent multiple renders
+    d3.select("#bar-chart-race").selectAll("*").remove();
 
     // Create SVG container
     const svg = d3.select("#bar-chart-race")
@@ -62,7 +69,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 .attr("y", d => y(d.country))
                 .attr("width", d => x(d.value))
                 .attr("height", y.bandwidth())
-                .attr("fill", (d, i) => d3.schemeCategory10[i % 10]);
+                .attr("fill", (d, i) => {
+                    // if it’s the chosen country, highlight in a different color
+                    return d.country === window.selectedCountryForBarChart ? "#e74c3c" : "#007acc";
+                });
 
             // ENTER new elements present in new data.
             bars.enter()
@@ -72,7 +82,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 .attr("height", y.bandwidth())
                 .attr("x", 0)
                 .attr("width", d => x(d.value))
-                .attr("fill", (d, i) => d3.schemeCategory10[i % 10]);
+                .attr("fill", (d, i) => {
+                    // if it’s the chosen country, highlight in a different color
+                    return d.country === window.selectedCountryForBarChart ? "#e74c3c" : "#007acc";
+                });
 
             // Labels
             const labels = svg.selectAll(".label")
@@ -121,6 +134,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 .attr("class", "year-label")
                 .attr("x", width)
                 .attr("y", height - 10)
+                .style("font-size", "1.5em")
+                .style("font-weight", "bold")
                 .text(year);
         }
 
@@ -154,5 +169,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Initial update
         update(years[yearIndex]);
+
+        // Highlight selected country
+        d3.select("#country-select").on("change", function() {
+            window.selectedCountryForBarChart = this.value;
+            update(years[yearIndex]);
+        });
     });
-});
+}
