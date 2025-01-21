@@ -1,12 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {
-    showBarChartRace();
-});
+// ...existing code...
+
+// Remove the DOMContentLoaded event listener that calls showBarChartRace() immediately
+// document.addEventListener("DOMContentLoaded", function() {
+//     showBarChartRace();
+// });
+
+// Now the bar chart is only displayed when explicitly called (e.g., via "See Past Trends" button).
+// ...existing code...
 
 function showBarChartRace() {
     // Set up dimensions and margins
     const margin = { top: 20, right: 200, bottom: 30, left: 200 },
-        width = 1200 - margin.left - margin.right,
-        height = 800 - margin.top - margin.bottom;
+        width = 1100 - margin.left - margin.right,
+        height = 700 - margin.top - margin.bottom;
 
     // Clear any existing SVG to prevent multiple renders
     d3.select("#bar-chart-race").selectAll("*").remove();
@@ -132,10 +138,11 @@ function showBarChartRace() {
 
             svg.append("text")
                 .attr("class", "year-label")
-                .attr("x", width)
-                .attr("y", height - 10)
-                .style("font-size", "1.5em")
+                .attr("x", width - 50)
+                .attr("y", height - 20)
+                .style("font-size", "6em")
                 .style("font-weight", "bold")
+                .style("opacity", 0.3) // Added opacity
                 .text(year);
         }
 
