@@ -10,10 +10,10 @@
             border: 1px solid #ccc;
         }
         #main-heading {
-            font-size: 2em;
+            font-size: 2.5em;
             text-align: center;
             margin-bottom: 5px;
-            color: #1ba0b1; /* Match light golden background */
+            color: #238a42; /* Match light golden background */
             font-weight: bold;
         }
         .big-bold-text {
@@ -49,7 +49,7 @@
                 Struggling with substance use? <br> Help is just a click away!
             </p>
             <p style="font-size: 1.2em; color: #444; text-align: center;">
-                <b>ANALYZE YOUR CHANCES OF GETTING TREATMENT AND LEADING A HEALTHY LIFE.</b><br>
+                ANALYZE YOUR CHANCES OF GETTING TREATED AND LEADING A <br> <b style="color: green;">HEALTHY LIFE.</b> <br>
             </p>
             <p style="font-size: 1.1em; color: #444; text-align: center;">
                 Explore key factors like gender, usage frequency, and education that impact drug use in European youth aged 15-34.<br>
@@ -95,16 +95,17 @@
                 </select>
                 <button id="calculate-button" disabled>See Your Chances of Getting Treated</button>
             </div>
-            <p style="font-size: 1.1em; color: #444; text-align: center;">
-                Click Below to Watch how treatment patterns have evolved over the past decade.
+            <p style="font-size: 1.3em; color: #224e14; text-align: center;">
+                <b>Click on "Get Help" to discover nearby drug rehabilitation centers and connect with experts who can provide the support you need.</b>
             </p>
-            <div id="action-buttons" style="text-align: center; margin-top: 10px;">
-                <button id="see-trends-button" onclick="toggleBarChartContainer()">See Past Trends</button>
-                <p style="font-size: 1.1em; color: #444; margin: 10px 0;">
-                    Click below on “Get Help” to find nearby rehab centers
-                </p>
+            <div style="text-align: center;">
                 <button id="get-help-button" onclick="window.location.href='map.html'">Get Help</button>
-                <button id="reset-button">Reset</button>
+            </div>
+            <p style="font-size: 1.2em; color: #e16d6d; text-align: center;">
+                Click on Reset to start over.
+            </p>
+            <div style="text-align: center;">
+                <button id="reset-button" style="background-color: red; color: white;">Reset</button>
             </div>
             <p style="font-size: 1em; color: #444; text-align: center; margin-top: 10px;">
                 Data Source:
@@ -128,9 +129,12 @@
             <div id="treatment-chances" class="treatment-card" style="display: none; margin-top: 20px;">
                 <!-- Card is now hidden by default and placed here -->
             </div>
-            <div id="bar-chart-race-container" style="display: none; margin-top: 10px;">
+            <div id="bar-chart-race-container" style="margin-top: 10px; text-align: center;">
+                <p style="font-size: 2em; color: #444;">
+                    <b>Click Play button below to watch how treatment patterns have evolved over the past decade.</b>
+                </p>
                 <div id="bar-chart-race"></div>
-                <button id="control-button">Play</button>
+                <button id="control-button" style="display: block;">Play</button>
             </div>
         </div>
     </div>
@@ -139,44 +143,10 @@
     <script src="scripts/circlePackingHierarchy.js"></script>
     <script src="scripts/barChartRace.js"></script>
     <script>
-        function toggleBarChartContainer() {
-            const circlePackings = document.getElementById('circle-packings');
-            const barChartContainer = document.getElementById('bar-chart-race-container');
-            const controlButton = document.getElementById('control-button');
-            const seeTrendsButton = document.getElementById('see-trends-button');
-            const getHelpButton = document.getElementById('get-help-button');
-            const resetButton = document.getElementById('reset-button');
-            const dropdowns = document.querySelectorAll('#controls select:not(#country-select)');
-
-            // If bar chart is hidden, show it; otherwise hide it
-            if (barChartContainer.style.display === 'none') {
-                // Hide circle packings, show bar chart
-                circlePackings.style.display = 'none';
-                barChartContainer.style.display = 'block';
-                seeTrendsButton.innerText = 'Back to Circles';
-                controlButton.style.display = 'inline-block';
-                getHelpButton.style.display = 'inline-block';
-                resetButton.style.display = 'none';
-                dropdowns.forEach(el => el.style.display = 'none');
-                d3.select("#bar-chart-race").selectAll("*").remove();
-                showBarChartRace();
-            } else {
-                // Hide bar chart, show circle packings
-                barChartContainer.style.display = 'none';
-                circlePackings.style.display = 'block';
-                seeTrendsButton.innerText = 'See Trends';
-                controlButton.style.display = 'none';
-                getHelpButton.style.display = 'none';
-                resetButton.style.display = 'inline-block';
-                dropdowns.forEach(el => el.style.display = 'inline-block');
-
-                // Update dropdowns' disabled state based on selected country
-                const selectedCountry = document.getElementById('country-select').value;
-                dropdowns.forEach(el => {
-                    el.disabled = selectedCountry === "";
-                });
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure the bar chart draws on page load
+            showBarChartRace();
+        });
 
         document.getElementById('country-select').addEventListener('change', function() {
             const selectedCountry = this.value;
@@ -193,6 +163,38 @@
             if (allSelected) {
                 document.getElementById('treatment-chances').style.display = 'block';
             }
+        });
+
+        document.getElementById('reset-button').addEventListener('click', function() {
+            // Reset dropdowns
+            const dropdowns = document.querySelectorAll('#controls select');
+            dropdowns.forEach(d => {
+                d.value = "";
+                d.disabled = true;
+            });
+            document.getElementById('country-select').disabled = false;
+
+            // Clear treatment chances display
+            document.getElementById('treatment-chances').style.display = 'none';
+            document.getElementById('treatment-chances').textContent = "";
+
+            // Ensure bar chart race, play button, and text are visible
+            document.getElementById('bar-chart-race-container').style.display = 'block';
+            document.getElementById('control-button').style.display = 'block';
+            document.querySelector('#bar-chart-race-container p').style.display = 'block';
+
+            // Re-enable "Get Help" button
+            document.getElementById('get-help-button').disabled = false;
+
+            // Clear highlights from circle chart and bar chart
+            window.selectedCountryForBarChart = null;
+            d3.selectAll("#circle-packings svg").each(function() {
+                d3.select(this).selectAll("circle").attr("fill", function(d) {
+                    return d.children ? color(d.depth) : "white";
+                });
+            });
+            d3.selectAll("#bar-chart-race svg").remove();
+            showBarChartRace();
         });
     </script>
 </body>
