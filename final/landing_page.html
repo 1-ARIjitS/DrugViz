@@ -135,6 +135,19 @@
                 opacity: 0.4;
             }
         }
+
+        .cta-button-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cta-button-container img {
+            position: absolute;
+            bottom: -40px; /* Moved further down */
+            right: -40px; /* Moved further right */
+            width: 110px; /* Increased size */
+            height: 110px; /* Increased size */
+        }
     </style>
 </head>
 <body>
@@ -143,7 +156,10 @@
         <h1 class="title">DrugViz</h1>
         <p class="subtitle">Empowering European youth to break free from drug addiction and substance use.</p>
         <p class="slogan">"Your path to freedom, resilience, and recovery starts here."</p>
-        <button class="cta-button" onclick="goToMainPage()">Explore Now</button>
+        <div class="cta-button-container">
+            <button class="cta-button" onclick="goToMainPage()">Explore Now</button>
+            <img src="click.gif" alt="Click here">
+        </div>
     </div>
 
     <script>
