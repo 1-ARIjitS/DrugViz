@@ -12,7 +12,7 @@ function showBarChartRace() {
     // Set up dimensions and margins
     const margin = { top: 20, right: 200, bottom: 30, left: 200 },
         width = 1350 - margin.left - margin.right,
-        height = 700 - margin.top - margin.bottom;
+        height = 800 - margin.top - margin.bottom;
 
     // Clear any existing SVG to prevent multiple renders
     d3.select("#bar-chart-race").selectAll("*").remove();

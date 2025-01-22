@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 .text(d => d.Country);
 
             const margin = { top: 40, right: 150, bottom: 50, left: 40 },
-                  width = 1200 - margin.left - margin.right,
-                  height = 500 - margin.top - margin.bottom;
+                  width = 1400 - margin.left - margin.right,
+                  height = 750 - margin.top - margin.bottom;
 
             const svg = d3.select("#chart").append("svg")
                 .attr("width", width + margin.left + margin.right)

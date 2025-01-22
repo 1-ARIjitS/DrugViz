@@ -295,7 +295,7 @@ d3.csv("../data/TDI_categories_aggregated.csv").then(data => {
         const totalPercentage = totalAll ? ((totalValue / totalAll) * 100).toFixed(2) : 0;
 
         const chancesElement = d3.select("#treatment-chances")
-            .style("font-size", "24px") // Increase font size
+            .style("font-size", "40px") // Increase font size
             .text(`Your chance of getting treated: ${totalPercentage}%`);
 
         // Apply color coding
