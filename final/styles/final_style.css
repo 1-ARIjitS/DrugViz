@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&family=Chalkboard&display=swap');
+
 body {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
+    font-family: 'Chalkboard', sans-serif;
+    font-size: 18px;
     background-color: #fff8dc; /* Light golden background */
     color: #333;
     margin: 0;
     padding: 0;
+    text-align: center; /* Center all text */
 }
 
 h1 {
-    font-size: 2em;
+    font-family: 'PT Serif Caption', serif;
+    font-size: 3em;
     text-align: center;
     color: #007acc;
-    margin: 10px 0; /* Reduced */
+    margin: 20px 0; /* Increased */
 }
 
 #controls {
@@ -20,21 +25,28 @@ h1 {
 }
 
 .dropdown {
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 10px 0;
-    border-radius: 4px;
-    padding: 6px;
-    width: 220px; /* Fixed width */
+    border-radius: 8px; /* Increased border radius */
+    padding: 10px; /* Increased padding */
+    width: 260px; /* Increased width */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #fff; /* Light dropdown background */
+    background-color: #f0f0f0; /* Light grey background */
     color: #333;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc; /* Increased border width */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added box shadow */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.dropdown:hover {
+    border-color: #007acc; /* Change border color on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
 }
 
 .tooltip {
-    font-size: 1em;
+    font-size: 1.2em;
     background-color: #fff;
     color: #333;
     border: 1px solid #ccc;
@@ -44,7 +56,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 30px; /* Increased gap */
     margin: 0 auto;
 }
 
@@ -52,7 +64,7 @@ h1 {
 #circle-packing-row2 {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px; /* Increased gap */
 }
 
 #circle-packings > div {
@@ -60,9 +72,9 @@ h1 {
 }
 
 .category-name {
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 15px;
     color: #007acc;
 }
 
@@ -73,35 +85,9 @@ h1 {
     color: #333;
     position: absolute;
     z-index: 1;
-    width: 200px;
-    max-height: 200px;
+    width: 250px;
+    max-height: 250px;
     overflow-y: auto;
-}
-
-/* New container layout */
-#main-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px; /* Reduced */
-    padding: 10px; /* Reduced */
-}
-
-/* Left panel styles */
-#left-panel {
-    width: 300px;
-    background-color: #f9e0a1; /* Dark golden side panel */
-    border-radius: 8px;
-    padding: 10px; /* Reduced */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Right panel styles */
-#right-panel {
-    flex: 1;
-    background-color: #ffffff; /* Light background for clarity */
-    border-radius: 8px;
-    padding: 10px; /* Reduced */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 button {
@@ -109,11 +95,114 @@ button {
     color: #fff;
     border-radius: 4px;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     margin: 5px 0;
     cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease; /* Smooth transition */
 }
 
 button:hover {
     background-color: #005f99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.main-div {
+    margin: 40px auto;
+    max-width: 1400px; /* Increased max-width */
+    /* ...more layout rules if desired... */
+}
+
+.responsive-svg-container {
+    text-align: center;
+    /* ...existing or additional rules... */
+}
+
+/* Example headings style */
+h2, h3 {
+    font-family: 'PT Serif Caption', serif;
+    color: #238a42;
+    font-weight: bold;
+    font-size: 2em; /* Increased font size */
+}
+
+/* Remove or adjust inline stylings from the HTML */
+.header-div {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* General section wrapper */
+.section {
+  width: 90%;
+  margin: 30px auto;
+  /* Removed card layout properties */
+  /* background-color: #fff; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Alternating section background color */
+.section-alt {
+  background-color: #f0f0f0;
+}
+
+/* Common text styling for each section */
+.section-text {
+  font-family: 'Chalkboard', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+/* Align dropdowns in one row */
+.dropdown-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Button row styling */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Map container to ensure no side alignment */
+#map-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Footer styling */
+.footer {
+  text-align: center;
+  font-size: 1rem;
+  margin: 20px 0;
+  color: #333;
+}
+
+/* ...you can add more classes or IDs from the other page as needed... */
+
+.treatment-card {
+  /* Removed card-like styling */
+  background-color: #fdebd0;
+  border: 2px solid #f5cba7;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  margin: 0 auto;
+  width: fit-content;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
 }
