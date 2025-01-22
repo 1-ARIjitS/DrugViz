@@ -1,0 +1,140 @@
+/* Map styles */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 20px;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 8px;
+    font: 16px 'Open Sans', sans-serif;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    color: black;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 10;
+}
+
+svg {
+    width: 100%;
+    height: 600px;
+    overflow: visible;
+    margin-top: 20px;
+}
+
+.controls {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+
+.controls label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.controls select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+.controls select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.visualization {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+}
+
+#map {
+    flex: 1;
+    width: 800px;
+    height: 600px;
+}
+
+.bar-charts {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    margin-left: 0px;
+    margin-top: -120px;
+}
+
+.bar-charts h2 {
+    margin-bottom: 10px;
+}
+
+#bar-chart1, #bar-chart2 {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+/* Line styles */
+h1 {
+    text-align: center;
+}
+
+#chart {
+    margin: 20px auto;
+    width: 1200px;
+}
+
+select {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 8px;
+    font: 16px 'Open Sans', sans-serif;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    color: black;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.vertical-line {
+    stroke: black;
+    stroke-width: 1;
+    opacity: 0;
+}
