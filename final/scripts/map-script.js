@@ -1,5 +1,5 @@
 const mapWidth = 700;
-const mapHeight = 600;
+const mapHeight = 650;
 
 const svg = d3.select("#map")
     .attr("width", mapWidth)
@@ -94,6 +94,9 @@ const loadDataAndRenderMap = () => {
                             .style("visibility", "visible");
                     })
                     .on("mouseout", function (event, d) {
+                        if (selectedCountry === d.properties.name && selectedCountry !== "overall") {
+                            return;
+                        }
                         const countryData = data.find(c => c.Country === d.properties.name);
                         d3.select(this).attr("fill", countryData ? colorScale(countryData[currentDataKey]) : "#ccc");
                         tooltip.style("opacity", 0)
