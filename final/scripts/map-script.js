@@ -62,6 +62,9 @@ const loadDataAndRenderMap = () => {
                     .attr("stroke", "black")
                     .attr("class", "country")
                     .on("mouseover", function (event, d) {
+                        if (selectedCountry === d.properties.name && selectedCountry !== "overall") {
+                            return;
+                        }
                         d3.select(this).attr("fill", hoverColor);
                         const countryData = data.find(c => c.Country === d.properties.name);
                         if (countryData) {
@@ -115,10 +118,13 @@ const loadDataAndRenderMap = () => {
                 }
             });
 
+            const treatmentCard = d3.select("#treatment-chances");
+
             countrySelect.on("change", () => {
                 selectedCountry = countrySelect.property("value");
                 if (selectedCountry === "overall") {
                     updateMap();
+                    treatmentCard.style("display", "none");
                 } else {
                     const countryData = data.find(c => c.Country === selectedCountry);
                     if (countryData) {
@@ -144,6 +150,19 @@ const loadDataAndRenderMap = () => {
                             .style("left", `${bbox.x + bbox.width / 2 + 440}px`)
                             .style("top", `${bbox.y + bbox.height / 2 + 30}px`)
                             .style("visibility", "visible");
+
+                        const riskText = `You are at a risk of ${countryData[currentDataKey]}% of getting addicted to drugs.`;
+                        let riskColor = "green";
+                        if (countryData[currentDataKey] > 50) {
+                            riskColor = "red";
+                        } else if (countryData[currentDataKey] > 20) {
+                            riskColor = "orange";
+                        }
+
+                        treatmentCard
+                            .style("display", "block")
+                            .style("color", riskColor)
+                            .html(riskText);
                     }
                 }
             });
