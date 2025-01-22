@@ -1,0 +1,286 @@
+body {
+    font-family: 'Chalkboard', sans-serif;
+    font-size: 18px;
+    background-color: #fff8dc; /* Light golden background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center all text */
+    margin: 20px;
+}
+
+h1 {
+    font-family: 'PT Serif Caption', serif;
+    font-size: 3em;
+    text-align: center;
+    color: #007acc;
+    margin: 20px 0; /* Increased */
+}
+
+#controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    font-size: 1.2em;
+    margin: 10px 0;
+    border-radius: 8px; /* Increased border radius */
+    padding: 10px; /* Increased padding */
+    width: 260px; /* Increased width */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333;
+    border: 2px solid #ccc; /* Increased border width */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added box shadow */
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.dropdown:hover {
+    border-color: #007acc; /* Change border color on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.tooltip {
+    position: absolute; /* 绝对定位: The tooltip is positioned relative to its nearest positioned ancestor. */
+    text-align: center; /* 文本居中: Centers the text inside the tooltip. */
+    padding: 8px; /* 内边距: Adds 8 pixels of padding inside the tooltip. */
+    font: 16px 'Open Sans', sans-serif; /* 字体样式: Sets the font size to 16 pixels and uses the 'Open Sans' font family. */
+    background: white; /* 背景颜色: Sets the background color of the tooltip to white. */
+    border: 1px solid #ccc; /* 边框: Adds a 1-pixel solid border with a light gray color. */
+    border-radius: 5px; /* 圆角: Rounds the corners of the tooltip with a 5-pixel radius. */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 阴影: Adds a shadow effect with a 2-pixel horizontal and vertical offset, a 5-pixel blur radius, and a 20% opacity black color. */
+    color: black; /* 字体颜色: Sets the text color to black. */
+    pointer-events: none; /* 禁止鼠标事件: Prevents the tooltip from capturing mouse events. */
+    opacity: 0; /* 初始透明度: Sets the initial opacity to 0, making the tooltip invisible. */
+    visibility: hidden; /* 初始不可见: Sets the initial visibility to hidden, making the tooltip invisible. */
+    transition: opacity 0.2s ease-in-out; /* 透明度过渡效果: Adds a smooth transition effect for the opacity change over 0.2 seconds. */
+    z-index: 10; /* 层级: Sets the stacking order of the tooltip to 10, ensuring it appears above other elements. */
+    max-width: 300px; /* 设置最大宽度: Sets the maximum width of the tooltip to 300 pixels. */
+    word-wrap: break-word; /* 自动换行: Allows long words to break and wrap onto the next line. */
+}
+
+#circle-packings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Increased gap */
+    margin: 0 auto;
+}
+
+#circle-packing-row1,
+#circle-packing-row2 {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap */
+}
+
+#circle-packings > div {
+    text-align: center;
+}
+
+.category-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #007acc;
+}
+
+.dropdown-checkboxes {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    position: absolute;
+    z-index: 1;
+    width: 250px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+button {
+    background-color: #1c8314; /* Light-themed button */
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #005f99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.main-div {
+    margin: 40px auto;
+    max-width: 1400px; /* Increased max-width */
+    /* ...more layout rules if desired... */
+}
+
+.responsive-svg-container {
+    text-align: center;
+    /* ...existing or additional rules... */
+}
+
+/* Example headings style */
+h2, h3 {
+    font-family: 'PT Serif Caption', serif;
+    color: #238a42;
+    font-weight: bold;
+    font-size: 2em; /* Increased font size */
+}
+
+/* Remove or adjust inline stylings from the HTML */
+.header-div {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* General section wrapper */
+.section {
+  width: 90%;
+  margin: 30px auto;
+  /* Removed card layout properties */
+  /* background-color: #fff; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Alternating section background color */
+.section-alt {
+  background-color: #f0f0f0;
+}
+
+/* Common text styling for each section */
+.section-text {
+  font-family: 'Chalkboard', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+/* Align dropdowns in one row */
+.dropdown-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Button row styling */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Map container to ensure no side alignment */
+#map-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Footer styling */
+.footer {
+  text-align: center;
+  font-size: 1rem;
+  margin: 20px 0;
+  color: #333;
+}
+
+/* ...you can add more classes or IDs from the other page as needed... */
+
+.treatment-card {
+  /* Removed card-like styling */
+  background-color: #fdebd0;
+  border: 2px solid #f5cba7;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  margin: 0 auto;
+  width: fit-content;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+svg {
+    width: 100%;
+    height: 600px;
+    overflow: visible;
+    margin-top: 20px;
+}
+
+.controls {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+}
+
+.controls label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.controls select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    margin-right: 10px;
+    transition: border-color 0.3s;
+}
+
+.controls select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.visualization {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+}
+
+#map {
+    flex: 1;
+    width: 800px;
+    height: 600px;
+}
+
+.bar-charts {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    margin-left: 0px;
+    margin-top: -120px;
+}
+
+.bar-charts h2 {
+    margin-bottom: 10px;
+}
+
+#bar-chart1, #bar-chart2 {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+}
