@@ -5,7 +5,7 @@ const svg = d3.select("#map")
     .attr("width", mapWidth)
     .attr("height", mapHeight);
 
-const tooltip = d3.select(".map-tooltip")
+const tooltip = d3.select(".tooltip")
     .style("font-family", "Arial, sans-serif");
 
 const dataSelect = d3.select("#data-select");
