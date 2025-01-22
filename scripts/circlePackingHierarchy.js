@@ -16,7 +16,7 @@ const pack = data => d3.pack()
         .sum(d => d.value)
         .sort((a, b) => b.value - a.value));
 
-d3.csv("../data/TDI_categories_aggregated.csv").then(data => {
+d3.csv("data/TDI_categories_aggregated.csv").then(data => {
     const categories = {
         "GENDER": ["Males", "Females"],
         "FREQUENCY OF USE": ["Daily", "4 to 6 days per week", "2 to 3 days per week", "Once a week or less", "Not used in the last 30 days"],
