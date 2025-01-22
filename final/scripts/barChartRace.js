@@ -26,7 +26,7 @@ function showBarChartRace() {
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
     // Load data
-    d3.csv("../data/TDI_trends.csv").then(data => {
+    d3.csv("data/TDI_trends.csv").then(data => {
         // Parse data
         const years = data.columns.slice(1);
         const countries = data.map(d => d.Country);
