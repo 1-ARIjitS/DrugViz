@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrugViz</title>
+    <link rel="stylesheet" href="styles/final_style.css">
+</head>
+<body>
+    <h1 id="main-heading">CHOOSE LIFE OVER DRUGS</h1>
+    <div id="main-container">
+        <div id="left-panel">
+            <div id="controls">
+                <label for="countryDropdown">Select Country:</label>
+                <select id="countryDropdown" class="dropdown"></select>
+            </div>
+            <div id="controls">
+                <label for="ageDropdown">Select Age Group:</label>
+                <select id="ageDropdown" class="dropdown"></select>
+            </div>
+            <div id="controls">
+                <label for="genderDropdown">Select Gender:</label>
+                <select id="genderDropdown" class="dropdown"></select>
+            </div>
+            <div id="controls">
+                <label for="yearDropdown">Select Year:</label>
+                <select id="yearDropdown" class="dropdown"></select>
+            </div>
+            <div id="controls">
+                <label for="drugDropdown">Select Drug:</label>
+                <select id="drugDropdown" class="dropdown"></select>
+            </div>
+            <div id="controls">
+                <button id="updateButton">Update</button>
+            </div>
+        </div>
+        <div id="right-panel">
+            <div id="circle-packings">
+                <div id="circle-packing-row1">
+                    <div>
+                        <svg id="circlePacking1"></svg>
+                        <div class="category-name">Category 1</div>
+                    </div>
+                    <div>
+                        <svg id="circlePacking2"></svg>
+                        <div class="category-name">Category 2</div>
+                    </div>
+                </div>
+                <div id="circle-packing-row2">
+                    <div>
+                        <svg id="circlePacking3"></svg>
+                        <div class="category-name">Category 3</div>
+                    </div>
+                    <div>
+                        <svg id="circlePacking4"></svg>
+                        <div class="category-name">Category 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
