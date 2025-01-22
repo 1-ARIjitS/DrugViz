@@ -1,5 +1,5 @@
-const width = 350;
-const height = 350;
+const width = 400;
+const height = 400;
 
 const color = d3.scaleLinear()
     .domain([0, 5])

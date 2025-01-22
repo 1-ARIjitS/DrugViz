@@ -1,5 +1,5 @@
-const mapWidth = 700;
-const mapHeight = 650;
+const mapWidth = 1200;
+const mapHeight = 700;
 
 const svg = d3.select("#map")
     .attr("width", mapWidth)

@@ -11,7 +11,7 @@
 function showBarChartRace() {
     // Set up dimensions and margins
     const margin = { top: 20, right: 200, bottom: 30, left: 200 },
-        width = 1100 - margin.left - margin.right,
+        width = 1350 - margin.left - margin.right,
         height = 700 - margin.top - margin.bottom;
 
     // Clear any existing SVG to prevent multiple renders
@@ -138,7 +138,7 @@ function showBarChartRace() {
 
             svg.append("text")
                 .attr("class", "year-label")
-                .attr("x", width - 50)
+                .attr("x", width - 100)
                 .attr("y", height - 20)
                 .style("font-size", "6em")
                 .style("font-weight", "bold")
