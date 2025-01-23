@@ -126,8 +126,8 @@ d3.csv("data/TDI_categories_aggregated.csv").then(data => {
         "LEVEL OF EDUCATION": d3.select("#circle-packing-education")
     };
 
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
+    const hierarchyTooltip = d3.select("body").append("div")
+        .attr("class", "hierarchy-tooltip")
         .style("opacity", 0)
         .style("position", "absolute")
         .style("background", "white")
@@ -138,14 +138,18 @@ d3.csv("data/TDI_categories_aggregated.csv").then(data => {
         .style("pointer-events", "none");
 
     const showTooltip = (event, d) => {
-        tooltip.style("opacity", 0.8)
+        hierarchyTooltip
+            .style("opacity", 0.8)
+            .style("visibility", "visible")
             .html(getTooltipContent(d))
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY - 28) + "px");
     };
 
     const hideTooltip = () => {
-        tooltip.style("opacity", 0);
+        hierarchyTooltip
+            .style("opacity", 0)
+            .style("visibility", "hidden");
     };
 
     const getTooltipContent = (d) => {
