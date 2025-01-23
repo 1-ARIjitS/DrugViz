@@ -18,10 +18,14 @@
 
     <!-- Section 1: Map and Intro -->
     <div class="section" style="background:none; box-shadow:none; border:none;">
-        <h1 class="section-title">Are you at risk of falling into drug use?</h1> <!-- Applied section-title class -->
+        <h1 class="section-title">
+            Are you at risk of falling into drug use?
+            <img src="drugs.png" alt="Drugs" style="width: 50px; height: auto; vertical-align: middle; margin-left: 10px;">
+        </h1> <!-- Applied section-title class -->
         <div class="section-content">
             <p class="section-text">
-                Explore the Drug Prevalence Map for Young Europeans (Ages 15-34).<br>
+                <img src="students.png" alt="Students" style="width: 50px; height: auto; vertical-align: middle; margin-right: 10px;">
+                Explore the Drug Prevalence Map for <span style="font-weight: bold; color: #ff5722;">Young</span> Europeans (<span style="font-weight: bold;">Ages 15-34</span>).<br>
                 Discover how many young people in your country have used illicit drugs.
                 Select your country and gender for personalized insights.
             </p>
@@ -41,17 +45,21 @@
             <svg id="map"></svg>
         </div>
         <div class="tooltip"></div>
-        <div id="risk-card-overlay" class="overlay" onclick="hideRiskCard()"></div> <!-- Added overlay -->
-        <div id="risk-card" class="treatment-card" style="display: none; margin-top: 20px; text-align: center;">
+        <div id="risk-card" class="treatment-card" style="display: none; margin-top: 100px; text-align: center;">
             Your risk of addiction to drugs: <span id="risk-value">N/A</span>%
         </div>
     </div>
 
     <!-- Section 2: Line Chart -->
     <div class="section" style="background:none; box-shadow:none; border:none;">
-        <h1 class="section-title">Don't Let Drugs Steal Your Future <br> The Deadly Toll of Drug Abuse</h1>
+        <h1 class="section-title">
+            Don't Let Drugs Steal Your Future <br> 
+            The Deadly Toll of Drug Abuse
+            <img src="death.png" alt="Death" style="width: 50px; height: auto; vertical-align: middle; margin-left: 10px;">
+        </h1>
         <div class="section-content">
             <p class="click-text">
+                <img src="warning.png" alt="Warning" style="width: 40px; height: auto; vertical-align: middle; margin: 0 5px;">
                 Uncover the Alarming Rise in Drug-Related <span style="color: red;"> Deaths </span> in Europe.
             </p>
             <p class="section-text">
@@ -68,7 +76,10 @@
 
     <!-- Section 3: Treatment Analysis -->
     <div class="section" style="background:none; box-shadow:none; border:none;">
-        <h1 class="section-title">Choose Life Over Drugs</h1>
+        <h1 class="section-title">
+            Choose Life Over Drugs
+            <img src="diagnosis.png" alt="Diagnosis" style="width: 70px; height: auto; vertical-align: middle; margin-left: 10px;">
+        </h1>
         <div class="section-content">
             <p class="click-text">
                 Struggling with substance use? Help is just a click away!
@@ -148,10 +159,12 @@
         <!-- New help-card -->
         <div class="help-card">
             <p class="click-text">
-                Click on "Get Help" to discover nearby drug rehabilitation centers and connect with experts who can provide the support you need.
+                Click on "Get Help"
+                <img src="help.png" alt="Help" style="width: 40px; height: auto; vertical-align: middle; margin-left: 5px;">
+                to discover nearby drug rehabilitation centers and connect with experts who can provide the support you need.
             </p>
             <button id="get-help-button"
-                    onclick="window.location.assign('http://localhost:3000')">
+                    onclick="window.location.assign('https://find-a-drug-treatment-center.vercel.app/')">
                 Get Help
             </button>
         </div>
