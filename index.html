@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DrugViz</title>
+    <link rel="icon" href="logo.png" type="image/png"> <!-- Add this line -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&family=Chalkboard&display=swap');
 
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Chalkboard', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,17 +36,13 @@
             max-width: 800px;
         }
 
-        .title {
-            font-size: 4em;
-            font-family: 'Lora', serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
-            margin-bottom: 20px;
+        .logo {
+            width: 500px; /* Increased size */
+            height: auto;
         }
 
         .subtitle {
-            font-size: 1.5em;
+            font-size: 2em; /* Increased font size */
             font-weight: 300;
             margin: 20px 0;
             line-height: 1.5;
@@ -53,8 +50,8 @@
         }
 
         .slogan {
-            font-size: 1.2em;
-            color: #ffdd57;
+            font-size: 1.6em; /* Increased font size */
+            color: #35d063; /* Green color */
             font-weight: bold;
             margin-top: 10px;
             text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
@@ -140,25 +137,16 @@
             position: relative;
             display: inline-block;
         }
-
-        .cta-button-container img {
-            position: absolute;
-            bottom: -40px; /* Moved further down */
-            right: -40px; /* Moved further right */
-            width: 110px; /* Increased size */
-            height: 110px; /* Increased size */
-        }
     </style>
 </head>
 <body>
     <div class="background-wave"></div>
     <div class="container">
-        <h1 class="title">DrugViz</h1>
+        <img src="logo.png" alt="DrugViz Logo" class="logo">
         <p class="subtitle">Empowering European youth to break free from drug addiction and substance use.</p>
         <p class="slogan">"Your path to freedom, resilience, and recovery starts here."</p>
         <div class="cta-button-container">
             <button class="cta-button" onclick="goToMainPage()">Explore Now</button>
-            <img src="click.gif" alt="Click here">
         </div>
     </div>
 
