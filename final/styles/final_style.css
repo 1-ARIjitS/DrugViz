@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif+Caption&family=Chalkboard&display=swap');
+
+body {
+    font-family: 'Chalkboard', sans-serif;
+    font-size: 18px;
+    background-color: #fff8dc; /* Light golden background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center all text */
+}
+
+h1 {
+    font-family: 'PT Serif Caption', serif;
+    font-size: 3em;
+    text-align: center;
+    color: #007acc;
+    margin: 20px 0; /* Increased */
+}
+
+#controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    font-size: 1.2em;
+    margin: 10px 0;
+    border-radius: 20px; /* Increased border radius for rounded corners */
+    padding: 10px;
+    width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 2px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dropdown:hover {
+    border-color: #007acc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  font: 16px 'Open Sans', sans-serif;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  color: black;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+#risk-card {
+  background-color: #fedcc3; /* Sets the background color to a light peach */
+  color: #8B4513; /* Sets the text color to a dark brown */
+  border: 2px solid #8B4513; /* Adds a 2px solid border with a dark brown color */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow with 0px horizontal offset, 4px vertical offset, 10px blur radius, and 20% opacity black color */
+  border-radius: 10px; /* Rounds the corners of the border with a 10px radius */
+  padding: 30px; /* Adds 30px padding inside the card */
+  margin: 0 auto; /* Centers the card horizontally */
+  width: 80%; /* Sets the width to 80% of the parent container */
+  max-width: 800px; /* Sets the maximum width to 800px */
+  text-align: center; /* Centers the text inside the card */
+  font-size: 3em; /* Sets the font size to 3em (relative to the parent element's font size) */
+  font-weight: bold; /* Makes the text bold */
+  position: relative; /* Added for positioning the close button */
+  z-index: 1001; /* Ensure it is above the overlay */
+  top: -150px; /* Move up */
+}
+
+#risk-card .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: gray; /* Gray background */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+#circle-packings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Increased gap */
+    margin: 0 auto;
+    background: none;
+    box-shadow: none;
+}
+
+#circle-packing-row1,
+#circle-packing-row2 {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increased gap */
+}
+
+#circle-packings > div {
+    text-align: center;
+}
+
+.category-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #007acc;
+}
+
+.dropdown-checkboxes {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    position: absolute;
+    z-index: 1;
+    width: 250px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+button {
+    background-color: #1c8314; /* Light-themed button */
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    padding: 12px 20px;
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 1.3em;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #005f99;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+.main-div {
+    margin: 40px auto;
+    max-width: 1400px; /* Increased max-width */
+    /* ...more layout rules if desired... */
+}
+
+.responsive-svg-container {
+    text-align: center;
+    /* ...existing or additional rules... */
+}
+
+/* Example headings style */
+h2, h3 {
+    font-family: 'PT Serif Caption', serif;
+    color: #238a42;
+    font-weight: bold;
+    font-size: 2em; /* Increased font size */
+}
+
+/* Remove or adjust inline stylings from the HTML */
+.header-div {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* General section wrapper */
+.section {
+  width: 90%;
+  margin: 30px auto;
+  /* Removed card layout properties */
+  /* background-color: #fff; */
+  /* border-radius: 8px; */
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Alternating section background color */
+.section-alt {
+  background-color: #f0f0f0;
+}
+
+/* Common text styling for each section */
+.section-text {
+  font-family: 'Chalkboard', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+
+/* Align dropdowns in one row */
+.dropdown-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Button row styling */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Map container to ensure no side alignment */
+#map-container {
+  text-align: center;
+  margin-top: 20; /* Move up */
+  background: none;
+  box-shadow: none;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    font-size: 1.8rem; /* Increased font size */
+    margin: 0; /* Increased margin */
+    padding: 20px 0; /* Added padding */
+    color: #333;
+    background-color: #eae698; /* Different background color */
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+/* ...you can add more classes or IDs from the other page as needed... */
+.treatment-card {
+    background-color: #fedcc3;
+    color: #8B4513; 
+    border: 2px solid #8B4513; /* Added border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Added shadow */
+    border-radius: 10px;
+    padding: 30px;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    font-size: 3em; /* Increased font size */
+    font-weight: bold;
+}
+
+.section-title {
+    background-color: #fceac1; /* A pale color to stand out */
+    padding: 15px;
+    margin-bottom: 0;
+    width: 100vw; /* Extend to full viewport width */
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0; /* Remove top margin to reduce gap */
+}
+
+.section-content {
+    background-color: #fff4db; 
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    margin-top: 20px; /* Added top margin */
+    margin-bottom: 20px;
+    width: 100%; /* Increased width */
+    max-width: 2000px; /* Set a maximum width */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+}
+
+.click-text {
+  margin-top: 20px;
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Special animation for the get-help-button */
+#get-help-button {
+  position: relative;
+  animation: pulse 1.8s infinite;
+  /* ...existing rules if any... */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(28,131,20,0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(28,131,20,0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(28,131,20,0.3);
+  }
+}
+
+#chart,
+#bar-chart-race-container {
+  background: none;
+  box-shadow: none;
+}
+
+.help-card {
+    background-color: #e0f7e9; /* Light green background */
+    border: 2px solid #238a42; /* Dark green border */
+    border-radius: 15px; /* Increased border radius */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    padding: 40px; /* Increased padding */
+    margin: 30px auto; /* Increased margin */
+    width: 100%; /* Adjusted width */
+    max-width: 1500px; /* Adjusted max-width */
+    text-align: center;
+    font-size: 1.0em; /* Increased font size */
+    color: #333; /* Text color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.help-card:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000; /* Below the risk card */
+}
