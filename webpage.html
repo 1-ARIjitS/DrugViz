@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrugViz</title>
+    <link rel="stylesheet" href="styles/final_style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="scripts/map-script.js" defer></script>
+    <script src="scripts/line-script.js" defer></script>
+    <script src="scripts/circlePackingHierarchy.js" defer></script>
+    <script src="scripts/barChartRace.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif+Caption&family=Chalkboard&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+
+    <!-- Section 1: Map and Intro -->
+    <div class="section" style="background:none; box-shadow:none; border:none;">
+        <h1>Are you at risk of falling into drug use?</h1>
+        <p class="section-text">
+            Explore the Drug Prevalence Map for Young Europeans (Ages 15-34).<br>
+            Discover how many young people in your country have used illicit drugs.
+            Select your country and gender for personalized insights.
+        </p>
+        <div class="dropdown-row">
+            <select id="map-country-select" class="dropdown">
+                <option value="overall">Select Your Country:</option>
+                <!-- Country options will be populated dynamically -->
+            </select>
+            <select id="data-select" class="dropdown">
+                <option value="prevalence">Select Your Gender:</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div id="map-container">
+            <svg id="map"></svg>
+        </div>
+        <div class="tooltip"></div>
+        <div id="risk-card-overlay" class="overlay" onclick="hideRiskCard()"></div> <!-- Added overlay -->
+        <div id="risk-card" class="treatment-card" style="display: none; margin-top: 20px; text-align: center;">
+            Your risk of addiction to drugs: <span id="risk-value">N/A</span>%
+        </div>
+    </div>
+
+    <!-- Section 2: Line Chart -->
+    <div class="section" style="background:none; box-shadow:none; border:none;">
+        <h1 class="section-title">Don't Let Drugs Steal Your Future <br> The Deadly Toll of Drug Abuse</h1>
+        <div class="section-content">
+            <p class="click-text">
+                Uncover the Alarming Rise in Drug-Related <span style="color: red;"> Deaths </span> in Europe.
+            </p>
+            <p class="section-text">
+                This interactive line chart reveals the devastating impact of drug use among European youth. Use the dropdown menu to filter by country and visualize the trend of drug-induced deaths over the past decade.
+            </p>
+            <!-- Added new option "Select Your Country" -->
+            <select id="line-country-select" class="dropdown">
+                <option value="overall">Select Your Country</option>
+                <!-- Options will be populated by JavaScript -->
+            </select>
+        </div>
+        <div id="chart"></div>
+    </div>
+
+    <!-- Section 3: Treatment Analysis -->
+    <div class="section" style="background:none; box-shadow:none; border:none;">
+        <h1 class="section-title">Choose Life Over Drugs</h1>
+        <div class="section-content">
+            <p class="click-text">
+                Struggling with substance use? Help is just a click away!
+            </p>
+            <p class="click-text">
+                Analyze your chances of getting treated and leading a <span style="color: green;">HEALTHY LIFE.</span></b>
+            </p>
+            <p class="section-text">
+                This interactive, zoomable visualization sheds light on the experiences of European youth aged 15-34 who are undergoing treatment for drug use. Explore the impact of factors such as gender, usage patterns, mode of administration, employment status, and education level on treatment.
+            </p>
+            <div class="dropdown-row">
+                <select id="country-select" class="dropdown">
+                    <option value="">Select Country</option>
+                </select>
+                <select id="gender-select" class="dropdown" disabled>
+                    <option value="">Select Gender</option>
+                    <option value="Males">Males</option>
+                    <option value="Females">Females</option>
+                </select>
+                <select id="frequency-select" class="dropdown" disabled>
+                    <option value="">Select Frequency of Use</option>
+                    <option value="Daily">Daily</option>
+                    <option value="4 to 6 days per week">4 to 6 days per week</option>
+                    <option value="2 to 3 days per week">2 to 3 days per week</option>
+                    <option value="Once a week or less">Once a week or less</option>
+                    <option value="Not used in the last 30 days">Not used in the last 30 days</option>
+                </select>
+                <select id="mode-select" class="dropdown" disabled>
+                    <option value="">Select Mode of Administration</option>
+                    <option value="Inject">Inject</option>
+                    <option value="Smoke / inhale">Smoke / inhale</option>
+                    <option value="Eat / drink">Eat / drink</option>
+                    <option value="Sniff">Sniff</option>
+                </select>
+                <select id="employment-select" class="dropdown" disabled>
+                    <option value="">Select Employment Status</option>
+                    <option value="Occasionally employed">Occasionally employed</option>
+                    <option value="Regularly employed">Regularly employed</option>
+                    <option value="Student">Student</option>
+                    <option value="Unemployed / discouraged">Unemployed / discouraged</option>
+                    <option value="Receiving social benefits / pensioners / house-makers / disable">Receiving social benefits / pensioners / house-makers / disable</option>
+                </select>
+                <select id="education-select" class="dropdown" disabled>
+                    <option value="">Select Level of Education</option>
+                    <option value="Never went to school / never completed primary school (ISCED 0)">Never went to school / never completed primary school (ISCED 0)</option>
+                    <option value="Primary level of education (ISCED 1)">Primary level of education (ISCED 1)</option>
+                    <option value="Secondary level of education (ISCED 2 and ISCED 3)">Secondary level of education (ISCED 2 and ISCED 3)</option>
+                    <option value="Higher education (ISCED 4 to ISCED 6)">Higher education (ISCED 4 to ISCED 6)</option>
+                </select>
+            </div>
+            <div class="button-row">
+                <button id="calculate-button" disabled>See Your Chances of Getting Treated</button>
+                <button id="reset-button" style="background-color: red; color: white;">Reset</button>
+            </div>
+        </div>
+        <br>
+        <div id="circle-packings">
+            <div id="circle-packing-row1">
+                <div id="circle-packing-gender"></div>
+                <div id="circle-packing-frequency"></div>
+                <div id="circle-packing-mode"></div>
+            </div>
+            <div id="circle-packing-row2">
+                <div id="circle-packing-employment"></div>
+                <div id="circle-packing-education"></div>
+            </div>
+        </div>
+        <div id="treatment-chances" class="treatment-card" style="display: none; margin-top: 20px; text-align: center; font-size: 2em;"></div>
+        <p class="click-text">
+            Click Play button below to watch how treatment patterns have evolved over the past decade.
+        </p>
+        <div id="bar-chart-race-container" style="text-align: center;">
+            <div id="bar-chart-race"></div>
+            <button id="control-button" style="display: block; margin: 0 auto;">Play</button>
+        </div>
+
+        <!-- New help-card -->
+        <div class="help-card">
+            <p class="click-text">
+                Click on "Get Help" to discover nearby drug rehabilitation centers and connect with experts who can provide the support you need.
+            </p>
+            <button id="get-help-button"
+                    onclick="window.location.assign('https://find-a-drug-treatment-center.vercel.app/')">
+                Get Help
+            </button>
+        </div>
+    </div>
+
+    <!-- Professional footer with data source and copyright -->
+    <footer class="footer">
+        <p>Data Source: <a href="https://www.euda.europa.eu/data/stats2024" target="_blank">European Union Drug Agency (EUDA)</a></p>
+        <p>&copy; 2025 DrugViz. Developed by ARIJIT SAMAL,JINTAO MA.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure the bar chart draws on page load
+            showBarChartRace();
+        });
+
+        document.getElementById('country-select').addEventListener('change', function() {
+            const selectedCountry = this.value;
+            const dropdowns = document.querySelectorAll('#gender-select, #frequency-select, #mode-select, #employment-select, #education-select');
+            dropdowns.forEach(el => {
+                el.disabled = selectedCountry === "";
+            });
+            document.getElementById('calculate-button').disabled = selectedCountry === "";
+            window.selectedCountryForBarChart = selectedCountry; // Set the selected country for bar chart race
+            showBarChartRace(); // Update the bar chart race
+        });
+
+        document.getElementById('calculate-button').addEventListener('click', function() {
+            const dropdowns = document.querySelectorAll('#gender-select, #frequency-select, #mode-select, #employment-select, #education-select');
+            const allSelected = Array.from(dropdowns).every(el => el.value !== "");
+            if (allSelected) {
+                document.getElementById('treatment-chances').style.display = 'block';
+            }
+        });
+
+        document.getElementById('reset-button').addEventListener('click', function() {
+            // Reset dropdowns
+            const dropdowns = document.querySelectorAll('#gender-select, #frequency-select, #mode-select, #employment-select, #education-select');
+            dropdowns.forEach(d => {
+                d.value = "";
+                d.disabled = true;
+            });
+            document.getElementById('country-select').disabled = false;
+
+            // Clear treatment chances display
+            document.getElementById('treatment-chances').style.display = 'none';
+            document.getElementById('treatment-chances').textContent = "";
+
+            // Ensure bar chart race, play button, and text are visible
+            document.getElementById('bar-chart-race-container').style.display = 'block';
+            document.getElementById('control-button').style.display = 'block';
+            document.querySelector('#bar-chart-race-container p').style.display = 'block';
+
+            // Re-enable "Get Help" button
+            document.getElementById('get-help-button').disabled = false;
+
+            // Clear highlights from circle chart and bar chart
+            window.selectedCountryForBarChart = null;
+            d3.selectAll("#circle-packings svg").each(function() {
+                d3.select(this).selectAll("circle").attr("fill", function(d) {
+                    return d.children ? color(d.depth) : "white";
+                });
+            });
+            d3.selectAll("#bar-chart-race svg").remove();
+            showBarChartRace();
+        });
+
+        function hideRiskCard() {
+            document.getElementById('risk-card').style.display = 'none';
+            document.getElementById('risk-card-overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
