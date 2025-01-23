@@ -18,22 +18,24 @@
 
     <!-- Section 1: Map and Intro -->
     <div class="section" style="background:none; box-shadow:none; border:none;">
-        <h1>Are you at risk of falling into drug use?</h1>
-        <p class="section-text">
-            Explore the Drug Prevalence Map for Young Europeans (Ages 15-34).<br>
-            Discover how many young people in your country have used illicit drugs.
-            Select your country and gender for personalized insights.
-        </p>
-        <div class="dropdown-row">
-            <select id="map-country-select" class="dropdown">
-                <option value="overall">Select Your Country:</option>
-                <!-- Country options will be populated dynamically -->
-            </select>
-            <select id="data-select" class="dropdown">
-                <option value="prevalence">Select Your Gender:</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+        <h1 class="section-title">Are you at risk of falling into drug use?</h1> <!-- Applied section-title class -->
+        <div class="section-content">
+            <p class="section-text">
+                Explore the Drug Prevalence Map for Young Europeans (Ages 15-34).<br>
+                Discover how many young people in your country have used illicit drugs.
+                Select your country and gender for personalized insights.
+            </p>
+            <div class="dropdown-row">
+                <select id="map-country-select" class="dropdown">
+                    <option value="overall">Select Your Country:</option>
+                    <!-- Country options will be populated dynamically -->
+                </select>
+                <select id="data-select" class="dropdown">
+                    <option value="prevalence">Select Your Gender:</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
         </div>
         <div id="map-container">
             <svg id="map"></svg>
