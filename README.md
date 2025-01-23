@@ -13,7 +13,7 @@ The EU's drug policy for youth focuses on **prevention**, **education**, **harm 
 
 Data source(European Union Drugs Agency (EUDA)):https://www.euda.europa.eu/data_en
 
-Website Like: https://1-arijits.github.io/DrugViz/
+Website Link: https://1-arijits.github.io/DrugViz/
 
 Finding a drug treatment center:
 https://github.com/woshimajintao/Find-a-drug-treatment-center
