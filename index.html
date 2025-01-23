@@ -38,7 +38,7 @@
         }
 
         .logo {
-            width: 300px; /* Reduced size */
+            width: 340px; /* Reduced size */
             height: auto;
             margin-top: 200px; /* Move the logo downwards */
             margin-bottom: 0px; /* Reduce the distance between logo and subtitle */
@@ -140,6 +140,19 @@
             position: relative;
             display: inline-block;
         }
+
+        .created-by {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 1em; /* Slightly increased font size */
+            color: #fff;
+            opacity: 0.7;
+        }
+
+        .created-by b {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -152,7 +165,7 @@
             <button class="cta-button" onclick="goToMainPage()">Explore Now</button>
         </div>
     </div>
-
+    <div class="created-by">Created by: <b>Arijit Samal & Jintao Ma</b></div>
     <script>
         function goToMainPage() {
             window.location.href = 'webpage.html'; // Replace with the actual URL of your website's main page.
